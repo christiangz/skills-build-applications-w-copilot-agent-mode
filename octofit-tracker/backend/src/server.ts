@@ -1,4 +1,9 @@
-import { app, connectDB, PORT, API_BASE_URL } from './index.js';
+import { app, connectDB, PORT } from './index.js';
+
+const CODESPACE_NAME = process.env.CODESPACE_NAME;
+export const API_BASE_URL = CODESPACE_NAME
+  ? `https://${CODESPACE_NAME}-8000.app.github.dev`
+  : `http://127.0.0.1:${PORT}`;
 
 connectDB()
   .then(() => {
