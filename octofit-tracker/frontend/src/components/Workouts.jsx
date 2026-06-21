@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
-const apiBaseUrl = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
+const workoutsUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/workouts/`
+  : 'http://localhost:8000/api/workouts/';
 
 const normalizeArrayResponse = (payload) => {
   if (Array.isArray(payload)) {
@@ -25,7 +26,7 @@ function Workouts() {
   useEffect(() => {
     async function loadWorkouts() {
       try {
-        const response = await fetch(`${apiBaseUrl}/api/workouts/`);
+        const response = await fetch(workoutsUrl);
         if (!response.ok) {
           throw new Error(`Status ${response.status}`);
         }

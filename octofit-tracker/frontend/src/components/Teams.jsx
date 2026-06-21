@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
-const apiBaseUrl = import.meta.env.VITE_CODESPACE_NAME
-  ? `https://${import.meta.env.VITE_CODESPACE_NAME}-8000.app.github.dev`
-  : 'http://localhost:8000';
+const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
+const teamsUrl = codespaceName
+  ? `https://${codespaceName}-8000.app.github.dev/api/teams/`
+  : 'http://localhost:8000/api/teams/';
 
 const normalizeArrayResponse = (payload) => {
   if (Array.isArray(payload)) {
@@ -25,7 +26,7 @@ function Teams() {
   useEffect(() => {
     async function loadTeams() {
       try {
-        const response = await fetch(`${apiBaseUrl}/api/teams/`);
+        const response = await fetch(teamsUrl);
         if (!response.ok) {
           throw new Error(`Status ${response.status}`);
         }
