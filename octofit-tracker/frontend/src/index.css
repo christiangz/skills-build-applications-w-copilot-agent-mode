@@ -8,11 +8,84 @@
 body {
   margin: 0;
   min-height: 100vh;
+  background: #f8fafc;
+}
+
+#root {
   display: grid;
   place-items: center;
+  padding: 1rem;
+}
+
+.app-shell {
+  width: min(100%, 960px);
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 24px 64px rgba(15, 23, 42, 0.08);
+  padding: 2rem;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+nav {
+  margin-bottom: 1.5rem;
+}
+
+.nav-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li {
+  margin: 0;
+}
+
+.nav-list a {
+  display: inline-block;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  color: #334155;
+  background: #e2e8f0;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-list a.active-link,
+.nav-list a:hover {
+  color: #0f172a;
+  background: #dbeafe;
+}
+
+.api-note {
+  margin-top: 0.5rem;
+  color: #64748b;
+  font-size: 0.95rem;
 }
 
 main {
-  padding: 2rem;
-  text-align: center;
+  padding-top: 0.5rem;
+}
+
+section {
+  text-align: left;
+}
+
+section h2 {
+  margin-top: 0;
+}
+
+ul,
+ol {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.error {
+  color: #b91c1c;
 }
